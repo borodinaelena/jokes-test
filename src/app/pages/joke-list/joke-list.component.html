@@ -1,0 +1,11 @@
+<div class="list-container">
+<mat-list role="list">
+  <mat-list-item role="listitem" class="d-flex justify-content-center" *ngFor="let item of pageList; let i=index">
+   <div> 
+     <p class="text-center joke-item">{{item.joke}}</p>
+     <p class="text-center">***</p>
+  </div>
+  </mat-list-item>
+</mat-list>
+<pagination-main *ngIf="count" [count]="count" (onChangePage)="onPageChanged($event)"></pagination-main>
+</div>
