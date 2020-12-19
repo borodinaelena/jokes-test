@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { JokeService } from '../../servises/joke.service'
 
 @Component({
@@ -10,36 +11,45 @@ export class JokeListComponent {
 
   public jokeList: any[];
   public count: number;
-  public pageList:any[];
+  public pageList: any[];
   public pageSize: number = 10;
-  public pageIndex: number=0;
-  constructor(private jokeService: JokeService) {
-    console.log('JokeListComponent')
-    jokeService.getJokeList().subscribe(res => {
-      console.log('res', res)
-      this.jokeList = res.value;
+  public pageIndex: number;
+
+  constructor(
+    private jokeService: JokeService,
+    private router: Router) {
+
+    this.pageIndex = this.jokeService.getPage();
+    this.jokeList = this.jokeService.getSavedJokeList();
+    if (this.jokeList && this.jokeList.length !== 0) {
       this.count = this.jokeList.length;
-      this.getPageList(this.pageIndex, this.pageIndex+this.pageSize);
-    })
+      this.getPageList(this.pageIndex, this.pageIndex + this.pageSize);
+      return;
+    }
+    this.jokeService.getJokeList()
+      .subscribe(res => {
+        this.jokeList = res.value;
+        this.jokeService.setJokeList(this.jokeList);
+        this.count = this.jokeList.length;
+        this.getPageList(this.pageIndex, this.pageIndex + this.pageSize);
+      })
   }
 
   onPageChanged($event) {
-    console.log($event);
     this.pageIndex = $event.pageIndex;
     this.pageSize = $event.pageSize;
-    this.getPageList(this.pageIndex, this.pageIndex+this.pageSize);
+    this.jokeService.setPage(this.pageIndex);
+    this.getPageList(this.pageIndex, this.pageIndex + this.pageSize);
   }
 
-  getPageList(firstI, lastI){
-    this.pageList=[];
-    for( let item=firstI; item<lastI; item++){
+  getPageList(firstI, lastI) {
+    this.pageList = [];
+    for (let item = firstI; item < lastI; item++) {
       this.pageList.push(this.jokeList[item]);
     }
   }
 
-  hide(i){
-    // console.log(i, this.pageIndex)
-    console.log(i<this.pageIndex || i>=this.pageSize+this.pageIndex)
-    return i<this.pageIndex || i>=this.pageSize+this.pageIndex;
+  goToJoke(id) {
+    this.router.navigate([`/details/${id}`]);
   }
 }

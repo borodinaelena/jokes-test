@@ -12,6 +12,8 @@ import { Injectable } from '@angular/core';
 
 export abstract class JokeService {
 
+  private page = 0;
+  private jokeList: any[];
   constructor(
     protected httpClient: HttpClient,
   ) {
@@ -30,6 +32,36 @@ export abstract class JokeService {
         catchError(this.handleError(`get joke list`))
       );
   }
+
+  getJoke(joke_id): Observable<any> {
+    return this.httpClient
+      .get(
+        `http://api.icndb.com/jokes/${joke_id}`,
+        { headers: this.getHeaders() },
+      )
+      .pipe(
+        map((response: any) => response),
+        map((data: any) => data),
+        tap(_ => console.log(`fetched joke id=${joke_id}`, _)),
+        catchError(this.handleError(`get joke id=${joke_id}`))
+      );
+  }
+
+  setPage(newPage) {
+    this.page = newPage;
+  }
+  getPage() {
+    return this.page;
+  }
+
+  setJokeList(list) {
+    this.jokeList = list;
+  }
+
+  getSavedJokeList() {
+    return this.jokeList;
+  }
+
   getHeaders(): HttpHeaders {
     return new HttpHeaders({
       'Content-Type': 'application/json',

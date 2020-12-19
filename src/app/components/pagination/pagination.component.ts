@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
-import { GridColumnStyleBuilder } from '@angular/flex-layout/grid/typings/column/column';
 
 @Component({
   selector: 'pagination-main',
@@ -20,20 +19,10 @@ export class PaginationComponent {
   customPage: number = null;
 
   constructor(
-    // public ui: UiService,
     public cdr: ChangeDetectorRef
-  ) {
-    console.log("PaginationComponent")
-   }
+  ) { }
 
   ngOnInit() {
-    // this.ui.getCount().subscribe(res => {
-    //   if (res.updatePage || this.count <= 10) {
-    //     this.currentPage = 1;
-    //     this.changePage(1);
-    //   }
-    //   this.initData();
-    // })
     this.initData();
 
   }
@@ -41,17 +30,14 @@ export class PaginationComponent {
   initData() {
     this.pagesFirstPart = [];
     this.pagesSecondPart = [];
-    console.log(this.count, (this.count - 1) / this.pageSize)
     this.pagesCount = parseInt(((this.count - 1) / this.pageSize).toString());
     if (this.pagesCount < this.count / this.pageSize) {
       this.pagesCount += 1;
     }
-    console.log(this.pagesCount)
     if (this.currentPage > this.pagesCount) {
       this.currentPage -= 1;
       this.changePage(this.currentPage)
     }
-    console.log(this.pagesCount)
     if (this.pagesCount <= 8) {
       for (let i = 1; i <= this.pagesCount; i++) {
         this.pagesFirstPart.push(i)
@@ -60,9 +46,8 @@ export class PaginationComponent {
       this.cdr.detectChanges();
       return;
     }
-    
+
     this.pagesFirstPart = [1, 2, 3];
-    console.log('pagesCount', this.pagesCount)
     this.pagesSecondPart = [this.pagesCount - 2, this.pagesCount - 1, this.pagesCount];
     this.cdr.detectChanges();
   }
