@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { JokeListComponent } from './pages/joke-list/joke-list.component';
 import { JokeComponent } from './pages/joke/joke.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { SearchComponent } from './components/search/search.component'
+
 import { HttpClientModule } from '@angular/common/http';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
@@ -50,6 +52,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { from } from 'rxjs';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -57,6 +61,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
     JokeListComponent,
     JokeComponent,
     PaginationComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -111,6 +116,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
     OverlayModule,
     PortalModule,
     ScrollingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
