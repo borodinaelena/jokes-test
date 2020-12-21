@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { JokeService } from 'src/app/servises/joke.service';
 
 @Component({
-  selector: 'joke-main',
+  selector: 'app-joke',
   templateUrl: './joke.component.html',
   styleUrls: ['./joke.component.scss']
 })

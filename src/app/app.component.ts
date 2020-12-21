@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(router:Router){
-    
-  }
+
+  public darkTheme = false;
+  constructor(router: Router) {}
 }

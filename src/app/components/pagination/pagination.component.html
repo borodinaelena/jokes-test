@@ -1,20 +1,20 @@
 <div *ngIf="count>10" class="d-flex flex-row align-items-baseline justify-content-center">
 
     <div class="d-flex align-items-center pages-list">
-        <button mat-raised-button color="primary" [disabled]="currentPage==1">
+        <button mat-raised-button class="page-btn" [disabled]="currentPage==1">
             <mat-icon (click)="changePage(currentPage-1)">chevron_left</mat-icon>
         </button>
-        <button mat-raised-button color="primary" disabled
+        <button mat-raised-button class="page-btn" disabled
             *ngIf="pagesSecondPart && pagesSecondPart.length>0 && currentPage>3 && pagesFirstPart && pagesFirstPart.length">...</button>
-        <button mat-raised-button color="primary" (click)="changePage(1)"
+        <button mat-raised-button class="page-btn" (click)="changePage(1)"
             *ngIf="pagesSecondPart && pagesSecondPart.length>0 && currentPage==3 && pagesFirstPart && pagesFirstPart.length">1</button>
-        <button mat-raised-button color="primary" *ngFor="let page of pagesFirstPart" (click)="changePage(page)"
+        <button mat-raised-button class="page-btn" *ngFor="let page of pagesFirstPart" (click)="changePage(page)"
             [disabled]="currentPage==page">{{page}}</button>
-        <button mat-raised-button color="primary" disabled
+        <button mat-raised-button class="page-btn" disabled
             *ngIf="pagesSecondPart && pagesSecondPart.length>0">...</button>
-        <button mat-raised-button color="primary" *ngFor="let page of pagesSecondPart" (click)="changePage(page)"
+        <button mat-raised-button class="page-btn" *ngFor="let page of pagesSecondPart" (click)="changePage(page)"
             [disabled]="currentPage==page">{{page}}</button>
-        <button mat-raised-button color="primary" [disabled]="currentPage==pagesCount">
+        <button mat-raised-button class="page-btn" [disabled]="currentPage==pagesCount">
             <mat-icon (click)="changePage(currentPage+1)">chevron_right</mat-icon>
         </button>
     </div>
@@ -25,7 +25,7 @@
             <!-- <mat-label>Go to page</mat-label> -->
             <input matInput (change)="changeCustomPage($event)" placeholder="Go to page">
         </mat-form-field>
-        <button mat-raised-button color="primary" (click)="changePage(customPage)">
+        <button mat-raised-button class="page-btn" (click)="changePage(customPage)">
             Go <mat-icon>chevron_right</mat-icon>
         </button>
     </div>

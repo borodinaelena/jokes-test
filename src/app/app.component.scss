@@ -1,0 +1,14 @@
+.theme-toggle{
+    position: absolute;
+    right: 60px;
+    top: 80px;
+    display: flex;
+
+    .left-label{
+        margin-right: 8px;
+    }
+
+    .toggle-btn{
+        margin-top: 2px;
+    }
+}

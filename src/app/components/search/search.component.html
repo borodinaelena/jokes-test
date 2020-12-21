@@ -1,3 +1,6 @@
-<mat-form-field>
-    <input matInput (input)="search()" placeholder="Search" [(ngModel)]="serachString">
-</mat-form-field>
+<div class="d-flex align-items-center">
+    <span class="material-icons">search</span>
+    <mat-form-field>
+        <input matInput (input)="search()" placeholder="Search" [(ngModel)]="serachString">
+    </mat-form-field>
+</div>

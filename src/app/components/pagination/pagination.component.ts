@@ -1,15 +1,15 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 
 @Component({
-  selector: 'pagination-main',
+  selector: 'app-pagination',
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent {
 
   @Input() count: number;
-  @Input() pageSize: number = 10;
-  @Input() currentPage: number = 1;
+  @Input() pageSize = 10;
+  @Input() currentPage = 1;
 
   @Output() onChangePage = new EventEmitter<any>();
   pagesCount = 0;
