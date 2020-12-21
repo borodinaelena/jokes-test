@@ -50,7 +50,7 @@ export abstract class PaginatedDataService {
 
   getSavedJokeList() {
     if (this.searchString && this.searchString !== "") {
-      return this.getJokeList();
+      return this.getJokeList(this.searchString, this.pageIndex);
     }
     return this.pageList;
   }
@@ -65,18 +65,18 @@ export abstract class PaginatedDataService {
     return this.pageList;
   }
 
-  getJokeList(searchString = this.searchString) {
+  getJokeList(searchString = this.searchString, pageIndex?) {
     this.searchString = searchString;
     if (!this.fullJokeList || this.fullJokeList.length === 0) {
       return [];
     }
     this.jokeList = [];
     this.count = 0;
-    this.pageIndex = 0;
+    this.pageIndex = pageIndex || 0;
     if (searchString === '') {
       this.jokeList = this.fullJokeList;
       this.count = this.jokeList.length;
-      return this.getPageList(0, 10);
+      return this.getPageList();
     }
     this.fullJokeList.forEach(item => {
       const joke = item.joke.toLowerCase();
@@ -85,6 +85,6 @@ export abstract class PaginatedDataService {
       }
     });
     this.count = this.jokeList.length;
-    return this.getPageList(0, 10);
+    return this.getPageList();
   }
 }
