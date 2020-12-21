@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { JokeService } from '../../servises/joke.service'
 
 @Component({
-  selector: 'joke-list-main',
+  selector: 'app-joke-list',
   templateUrl: './joke-list.component.html',
   styleUrls: ['./joke-list.component.scss']
 })

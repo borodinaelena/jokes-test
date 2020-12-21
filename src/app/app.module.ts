@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { JokeListComponent } from './pages/joke-list/joke-list.component';
 import { JokeComponent } from './pages/joke/joke.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
-import { SearchComponent } from './components/search/search.component'
+import { SearchComponent } from './components/search/search.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { MatListModule } from '@angular/material/list';
