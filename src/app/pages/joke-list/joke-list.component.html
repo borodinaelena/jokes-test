@@ -1,7 +1,7 @@
 <div class="list-container">
-  <app-search (onSearch)="getJokeList($event)"></app-search>
+  <app-search (onSearch)="getJokeList($event)" [searchString]="searchString"></app-search>
   <mat-list role="list">
-    <mat-list-item role="listitem" class="d-flex justify-content-center" *ngFor="let item of pageList; let i=index">
+    <mat-list-item role="listitem" class="d-flex justify-content-center" *ngFor="let item of jokeList; let i=index">
       <div (click)="goToJoke(item.id)">
         <p class="text-center joke-item">{{item.joke}}</p>
         <p class="text-center">***</p>
